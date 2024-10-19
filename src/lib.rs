@@ -275,4 +275,23 @@ mod tests {
 
         Ok(())
     }
+
+    #[test]
+    fn overshadowed() -> Result<(), TimeIntervalError> {
+        const INTERVALS: &[(Time, Time)] = &[(20, 40), (30, 50), (60, 90), (1, 100)];
+        let time_intervals = TimeIntervals::try_from(INTERVALS)?;
+
+        // The valid range is [1, 100] because the last interval overshadows the previous ones.
+        assert!(!time_intervals.contains_time(0));
+        assert!(time_intervals.contains_time(1));
+        assert!(time_intervals.contains_time(55));
+        assert!(time_intervals.contains_time(100));
+        assert!(!time_intervals.contains_time(101));
+
+        // We also make sure that the only interval we have is [1, 100] to verify we optimized the
+        // search space.
+        assert_eq!(time_intervals.intervals, [(1, 100)]);
+
+        Ok(())
+    }
 }

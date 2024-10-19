@@ -20,18 +20,19 @@ Jarred
 ```
 ❯ cargo test
    Compiling time-intervals v0.1.0 (/Users/jarrednicholls/code/time-intervals)
-    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.24s
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.26s
      Running unittests src/lib.rs (target/debug/deps/time_intervals-1a90585398a5a8cd)
 
-running 6 tests
+running 7 tests
 test tests::already_sorted ... ok
 test tests::gaps ... ok
-test tests::overlapping ... ok
+test tests::overshadowed ... ok
 test tests::sparse_overlapping ... ok
 test tests::time_interval ... ok
 test tests::out_of_order ... ok
+test tests::overlapping ... ok
 
-test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
 
    Doc-tests time_intervals
 
